@@ -5,7 +5,12 @@
 
 ## Install
 
-1. npm install braingames-nmikhaylov
-2. brain-even
+> npm install -g braingames-nmikhaylov
 
-[![asciicast](https://asciinema.org/a/womWXYA5sOVfL2UlCglzMq486.svg)](https://asciinema.org/a/womWXYA5sOVfL2UlCglzMq486)
+### Usage
+
+**brain-even** — run BrainEven Game
+[![asciicast](https://asciinema.org/a/239589.svg)](https://asciinema.org/a/239589)
+
+**brain-calc** — run BrainCalc Game
+[![asciicast](https://asciinema.org/a/239608.svg)](https://asciinema.org/a/239608)

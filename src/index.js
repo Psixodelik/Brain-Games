@@ -17,10 +17,49 @@ const resultMessage = (userName, win, currentAnswer, correctAnswer) => {
   }
 };
 
+const getQuestionAndAnswer = (...questionParts) => {
+  const question = questionParts.join(' ');
+  return readlineSync.question(`Question: ${question}\nYour answer: `);
+};
+
+const gameInit = (gameMessage) => {
+  const userName = getName(gameMessage);
+  const rounds = 3;
+
+  return [userName, rounds, () => console.log('Correct')];
+};
+
 const getRandomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
+const getRandomExpression = () => {
+  const numOne = getRandomNumber(0, 100);
+  const numTwo = getRandomNumber(0, 100);
+  const exp = ['+', '-', '*'];
+  const currentExp = exp[getRandomNumber(0, 2)];
+  let result = null;
+
+  switch (currentExp) {
+    case '+':
+      result = numOne + numTwo;
+      break;
+    case '-':
+      result = numOne - numTwo;
+      break;
+    case '*':
+      result = numOne * numTwo;
+      break;
+    default:
+      result = 'NULL';
+      break;
+  }
+
+  return [numOne, numTwo, currentExp, result];
+};
+
 export {
-  getName as default,
+  gameInit as default,
   resultMessage,
   getRandomNumber,
+  getQuestionAndAnswer,
+  getRandomExpression,
 };
