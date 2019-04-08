@@ -5,5 +5,7 @@
 
 ## Install
 
-1. make install
-2. make start
+1. npm install braingames-nmikhaylov
+2. brain-even
+
+[![asciicast](https://asciinema.org/a/womWXYA5sOVfL2UlCglzMq486.svg)](https://asciinema.org/a/womWXYA5sOVfL2UlCglzMq486)

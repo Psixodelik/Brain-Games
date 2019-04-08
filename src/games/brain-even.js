@@ -17,7 +17,7 @@ export default () => {
     const boolAnswer = userAnswer === 'yes';
 
     if (isEven(num) !== boolAnswer || !correctAnswerString.includes(userAnswer)) {
-      console.log(`${userAnswer} is wrong answer ;(. Correct answer was ${boolToWord(!userAnswer)}`);
+      console.log(`${userAnswer} is wrong answer ;(. Correct answer was ${boolToWord(!boolAnswer)}`);
       console.log(`Let's try again, ${userName}!`);
       return false;
     }
