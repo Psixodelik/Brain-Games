@@ -1,11 +1,6 @@
 env:
   node: true
 
-plugins:
-  - babel
-
-parser: babel-eslint
-
 extends:
   - 'airbnb-base'
 
