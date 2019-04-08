@@ -29,5 +29,7 @@
     "@babel/preset-env": "^7.4.3",
     "eslint": "^5.16.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "readline-sync": "^1.4.9"
+  }
 }
