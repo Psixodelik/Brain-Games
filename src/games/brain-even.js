@@ -1,7 +1,6 @@
-import getName from '..';
+import getName, { getRandomNumber, resultMessage } from '..';
 import readlineSync from 'readline-sync';
 
-const getRandomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 const isEven = num => num % 2 === 0;
 const boolToWord = bool => (bool ? 'yes' : 'no');
 
@@ -17,14 +16,13 @@ export default () => {
     const boolAnswer = userAnswer === 'yes';
 
     if (isEven(num) !== boolAnswer || !correctAnswerString.includes(userAnswer)) {
-      console.log(`${userAnswer} is wrong answer ;(. Correct answer was ${boolToWord(isEven(num))}`);
-      console.log(`Let's try again, ${userName}!`);
+      resultMessage(userName, false, userAnswer, boolToWord(isEven(num)));
       return false;
     }
 
     console.log('Correct');
   }
 
-  console.log(`Congratulations, ${userName}!`);
+  resultMessage(userName, true);
   return true;
 };
