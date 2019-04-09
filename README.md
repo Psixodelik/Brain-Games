@@ -9,8 +9,8 @@
 
 ### Usage
 
-**brain-even** â€” run BrainEven Game
+**brain-even** — run BrainEven Game
 [![asciicast](https://asciinema.org/a/239589.svg)](https://asciinema.org/a/239589)
 
-**brain-calc** â€” run BrainCalc Game
+**brain-calc** — run BrainCalc Game
 [![asciicast](https://asciinema.org/a/239608.svg)](https://asciinema.org/a/239608)

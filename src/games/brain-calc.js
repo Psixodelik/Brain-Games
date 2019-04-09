@@ -1,19 +1,44 @@
-import gameInit, { getRandomExpression, resultMessage, getQuestionAndAnswer } from '..';
+import {
+  getRandomNumber,
+  getQuestionAndAnswer,
+  playGame,
+} from '..';
 
-export default () => {
-  const gameMessage = '\nWhat is the result of the expression?';
-  const [userName, rounds, correctMessage] = gameInit(gameMessage);
+const gameMessage = '\nWhat is the result of the expression?';
 
-  for (let i = 0; i < rounds; i += 1) {
-    const [numOne, numTwo, expression, answer] = getRandomExpression();
-    const userAnswer = Number(getQuestionAndAnswer(numOne, expression, numTwo));
+const randomExpressionData = () => {
+  const numOne = getRandomNumber(0, 100);
+  const numTwo = getRandomNumber(0, 100);
+  const mathExpression = ['+', '-', '*'];
+  const currentExpression = mathExpression[getRandomNumber(0, mathExpression.length - 1)];
+  let result = null;
 
-    if (userAnswer !== answer) {
-      return resultMessage(userName, false, userAnswer, answer);
-    }
-
-    correctMessage();
+  switch (currentExpression) {
+    case '+':
+      result = numOne + numTwo;
+      break;
+    case '-':
+      result = numOne - numTwo;
+      break;
+    case '*':
+      result = numOne * numTwo;
+      break;
+    default:
+      result = 'NULL';
+      break;
   }
 
-  return resultMessage(userName, true);
+  return [numOne, numTwo, currentExpression, result];
 };
+
+const gameCalc = () => {
+  const [numOne, numTwo, expression, correctAnswer] = randomExpressionData();
+  const userAnswer = Number(getQuestionAndAnswer(numOne, expression, numTwo));
+
+  return {
+    userAnswer,
+    correctAnswer,
+  };
+};
+
+export default () => playGame(gameCalc, gameMessage);

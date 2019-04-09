@@ -1,20 +1,14 @@
 import readlineSync from 'readline-sync';
 
-const getName = (gameMessage) => {
-  const welcomeMessage = (`Welcome to the Brain Games!${gameMessage || ''}`);
-  const name = readlineSync.question(`${welcomeMessage}\n\nMay I have your name? `);
-
-  console.log(`Hello, ${name}\n`);
-  return name;
-};
-
-const resultMessage = (userName, win, currentAnswer, correctAnswer) => {
+const showResultMessage = (userName, win, currentAnswer, correctAnswer) => {
   if (win) {
     console.log(`Congratulations, ${userName}!`);
-  } else {
-    console.log(`${currentAnswer} is wrong answer ;(. Correct answer was ${correctAnswer}`);
-    console.log(`Let's try again, ${userName}!`);
+    return true;
   }
+
+  console.log(`${currentAnswer} is wrong answer ;(. Correct answer was ${correctAnswer}`);
+  console.log(`Let's try again, ${userName}!`);
+  return false;
 };
 
 const getQuestionAndAnswer = (...questionParts) => {
@@ -23,43 +17,41 @@ const getQuestionAndAnswer = (...questionParts) => {
 };
 
 const gameInit = (gameMessage) => {
-  const userName = getName(gameMessage);
-  const rounds = 3;
+  const getName = () => {
+    const welcomeMessage = (`Welcome to the Brain Games!${gameMessage || ''}`);
+    const name = readlineSync.question(`${welcomeMessage}\n\nMay I have your name? `);
 
-  return [userName, rounds, () => console.log('Correct')];
+    console.log(`Hello, ${name}\n`);
+    return name;
+  };
+
+  return {
+    userName: getName(),
+    rounds: 3,
+    correctMessage: () => console.log('Correct'),
+  };
+};
+
+const playGame = (gameRoundQA, gameMessage) => {
+  const init = gameInit(gameMessage);
+
+  for (let i = 0; i < init.rounds; i += 1) {
+    const gameData = gameRoundQA();
+
+    if (gameData.userAnswer === gameData.correctAnswer) {
+      init.correctMessage();
+    } else {
+      return showResultMessage(init.userName, false, gameData.userAnswer, gameData.correctAnswer);
+    }
+  }
+
+  return showResultMessage(init.userName, true);
 };
 
 const getRandomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
-const getRandomExpression = () => {
-  const numOne = getRandomNumber(0, 100);
-  const numTwo = getRandomNumber(0, 100);
-  const exp = ['+', '-', '*'];
-  const currentExp = exp[getRandomNumber(0, 2)];
-  let result = null;
-
-  switch (currentExp) {
-    case '+':
-      result = numOne + numTwo;
-      break;
-    case '-':
-      result = numOne - numTwo;
-      break;
-    case '*':
-      result = numOne * numTwo;
-      break;
-    default:
-      result = 'NULL';
-      break;
-  }
-
-  return [numOne, numTwo, currentExp, result];
-};
-
 export {
-  gameInit as default,
-  resultMessage,
+  playGame,
   getRandomNumber,
   getQuestionAndAnswer,
-  getRandomExpression,
 };
