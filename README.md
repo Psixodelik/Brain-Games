@@ -14,3 +14,6 @@
 
 **brain-calc** — run BrainCalc Game
 [![asciicast](https://asciinema.org/a/239608.svg)](https://asciinema.org/a/239608)
+
+**brain-gcd** — run BrainGcd Game
+[![asciicast](https://asciinema.org/a/239908.svg)](https://asciinema.org/a/239908)

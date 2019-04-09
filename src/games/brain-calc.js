@@ -7,8 +7,8 @@ import {
 const gameMessage = '\nWhat is the result of the expression?';
 
 const randomExpressionData = () => {
-  const numOne = getRandomNumber(0, 100);
-  const numTwo = getRandomNumber(0, 100);
+  const numOne = getRandomNumber();
+  const numTwo = getRandomNumber();
   const mathExpression = ['+', '-', '*'];
   const currentExpression = mathExpression[getRandomNumber(0, mathExpression.length - 1)];
   let result = null;

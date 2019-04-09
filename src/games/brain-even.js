@@ -8,7 +8,7 @@ const gameMessage = '\nAnswer "yes" if number even otherwise answer "no".';
 const isEven = num => num % 2 === 0;
 
 const gameIsEven = () => {
-  const questions = getRandomNumber(0, 100);
+  const questions = getRandomNumber();
   const userAnswer = getQuestionAndAnswer(questions);
   const correctAnswer = isEven(questions) ? 'yes' : 'no';
 
