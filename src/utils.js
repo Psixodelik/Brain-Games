@@ -42,9 +42,7 @@ const gcd = (numOne, numTwo) => {
   return result;
 };
 
-const questionToString = (...data) => {
-  return data.join(' ');
-};
+const questionToString = (...data) => data.join(' ');
 
 export {
   getRandomNumber,
