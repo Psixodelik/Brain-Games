@@ -1,21 +1,18 @@
+import play from '..';
+
 import {
   getRandomNumber,
-  getQuestionAndAnswer,
-  playGame,
-} from '..';
+  isEven,
+  questionToString,
+} from '../utils';
 
-const gameMessage = '\nAnswer "yes" if number even otherwise answer "no".';
-const isEven = num => num % 2 === 0;
+const gameDescription = '\nAnswer "yes" if number even otherwise answer "no".';
 
 const gameIsEven = () => {
-  const questions = getRandomNumber();
-  const userAnswer = getQuestionAndAnswer(questions);
-  const correctAnswer = isEven(questions) ? 'yes' : 'no';
+  const question = questionToString(getRandomNumber());
+  const correctAnswer = isEven(question) ? 'yes' : 'no';
 
-  return {
-    userAnswer,
-    correctAnswer,
-  };
+  return { question, correctAnswer };
 };
 
-export default () => playGame(gameIsEven, gameMessage);
+export default () => play(gameIsEven, gameDescription);

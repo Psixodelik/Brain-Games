@@ -1,37 +1,20 @@
+import play from '..';
+
 import {
   getRandomNumber,
-  getQuestionAndAnswer,
-  playGame,
-} from '..';
+  gcd,
+  questionToString,
+} from '../utils';
 
-const gameMessage = '\nFind the greatest common divisor of given numbers.';
-
-const gcdData = () => {
-  const numOne = getRandomNumber();
-  const numTwo = getRandomNumber();
-
-  let copyNumOne = numOne;
-  let copyNumTwo = numTwo;
-
-  while (copyNumTwo !== 0) {
-    const buf = copyNumOne % copyNumTwo;
-    copyNumOne = copyNumTwo;
-    copyNumTwo = buf;
-  }
-
-  const result = copyNumOne;
-
-  return [numOne, numTwo, result];
-};
+const gameDescription = '\nFind the greatest common divisor of given numbers.';
 
 const gameGcd = () => {
-  const [numOne, numTwo, correctAnswer] = gcdData();
-  const userAnswer = Number(getQuestionAndAnswer(numOne, numTwo));
+  const numOne = getRandomNumber();
+  const numTwo = getRandomNumber();
+  const question = questionToString(numOne, numTwo);
+  const correctAnswer = gcd(numOne, numTwo);
 
-  return {
-    userAnswer,
-    correctAnswer,
-  };
+  return { question, correctAnswer };
 };
 
-export default () => playGame(gameGcd, gameMessage);
+export default () => play(gameGcd, gameDescription);

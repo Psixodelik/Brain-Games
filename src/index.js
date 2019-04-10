@@ -1,58 +1,27 @@
 import readlineSync from 'readline-sync';
 
-const showResultMessage = (userName, win, currentAnswer, correctAnswer) => {
-  if (win) {
-    console.log(`Congratulations, ${userName}!`);
-    return true;
-  }
+export default (gameRoundQA, gameMessage) => {
+  const welcomeMessage = (`Welcome to the Brain Games!${gameMessage || ''}`);
+  const userName = readlineSync.question(`${welcomeMessage}\n\nMay I have your name? `);
+  console.log(`Hello, ${userName}\n`);
 
-  console.log(`${currentAnswer} is wrong answer ;(. Correct answer was ${correctAnswer}`);
-  console.log(`Let's try again, ${userName}!`);
-  return false;
-};
+  if (!gameRoundQA) return true;
 
-const getQuestionAndAnswer = (...questionParts) => {
-  const question = questionParts.join(' ');
-  return readlineSync.question(`Question: ${question}\nYour answer: `);
-};
+  const rounds = 3;
 
-const gameInit = (gameMessage) => {
-  const getName = () => {
-    const welcomeMessage = (`Welcome to the Brain Games!${gameMessage || ''}`);
-    const name = readlineSync.question(`${welcomeMessage}\n\nMay I have your name? `);
-
-    console.log(`Hello, ${name}\n`);
-    return name;
-  };
-
-  return {
-    userName: getName(),
-    rounds: 3,
-    correctMessage: () => console.log('Correct'),
-  };
-};
-
-const playGame = (gameRoundQA, gameMessage) => {
-  const init = gameInit(gameMessage);
-
-  for (let i = 0; i < init.rounds; i += 1) {
+  for (let i = 0; i < rounds; i += 1) {
     const gameData = gameRoundQA();
+    const userAnswer = readlineSync.question(`Question: ${gameData.question}\nYour answer: `);
 
-    if (gameData.userAnswer === gameData.correctAnswer) {
-      init.correctMessage();
+    if (userAnswer === gameData.correctAnswer.toString()) {
+      console.log('Correct');
     } else {
-      return showResultMessage(init.userName, false, gameData.userAnswer, gameData.correctAnswer);
+      console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${gameData.correctAnswer}"`);
+      console.log(`Let's try again, ${userName}!`);
+      return false;
     }
   }
 
-  return showResultMessage(init.userName, true);
-};
-
-const getRandomNumber = (min = 0, max = 100) => Math.floor(Math.random() * (max - min + 1)) + min;
-
-export {
-  gameInit as default,
-  playGame,
-  getRandomNumber,
-  getQuestionAndAnswer,
+  console.log(`Congratulations, ${userName}!`);
+  return true;
 };

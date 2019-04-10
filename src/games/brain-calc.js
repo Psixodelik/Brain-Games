@@ -1,44 +1,23 @@
+import play from '..';
+
 import {
+  getRandomExpression,
   getRandomNumber,
-  getQuestionAndAnswer,
-  playGame,
-} from '..';
+  calculate,
+  questionToString,
+} from '../utils';
 
-const gameMessage = '\nWhat is the result of the expression?';
-
-const randomExpressionData = () => {
-  const numOne = getRandomNumber();
-  const numTwo = getRandomNumber();
-  const mathExpression = ['+', '-', '*'];
-  const currentExpression = mathExpression[getRandomNumber(0, mathExpression.length - 1)];
-  let result = null;
-
-  switch (currentExpression) {
-    case '+':
-      result = numOne + numTwo;
-      break;
-    case '-':
-      result = numOne - numTwo;
-      break;
-    case '*':
-      result = numOne * numTwo;
-      break;
-    default:
-      result = 'NULL';
-      break;
-  }
-
-  return [numOne, numTwo, currentExpression, result];
-};
+const gameDescription = '\nWhat is the result of the expression?';
 
 const gameCalc = () => {
-  const [numOne, numTwo, expression, correctAnswer] = randomExpressionData();
-  const userAnswer = Number(getQuestionAndAnswer(numOne, expression, numTwo));
+  const numOne = getRandomNumber();
+  const numTwo = getRandomNumber();
+  const currentExpression = getRandomExpression();
 
-  return {
-    userAnswer,
-    correctAnswer,
-  };
+  const question = questionToString(numOne, currentExpression, numTwo);
+  const correctAnswer = calculate(numOne, numTwo, currentExpression);
+
+  return { question, correctAnswer };
 };
 
-export default () => playGame(gameCalc, gameMessage);
+export default () => play(gameCalc, gameDescription);
