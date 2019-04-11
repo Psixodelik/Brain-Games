@@ -5,7 +5,9 @@
 
 ## Install
 
-> npm install -g braingames-nmikhaylov
+```
+npm install -g braingames-nmikhaylov
+```
 
 ### Usage
 

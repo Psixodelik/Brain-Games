@@ -1,12 +1,13 @@
-import play from '..';
+import createGame from '..';
 
 import {
   getRandomNumber,
-  isEven,
   questionToString,
 } from '../utils';
 
 const gameDescription = '\nAnswer "yes" if number even otherwise answer "no".';
+
+const isEven = num => num % 2 === 0;
 
 const gameIsEven = () => {
   const question = questionToString(getRandomNumber());
@@ -15,4 +16,4 @@ const gameIsEven = () => {
   return { question, correctAnswer };
 };
 
-export default () => play(gameIsEven, gameDescription);
+export default () => createGame(gameIsEven, gameDescription);
