@@ -3,7 +3,7 @@ import readlineSync from 'readline-sync';
 const rounds = 3;
 
 export default (getQuestionAndAnswer, gameMessage) => {
-  const welcomeMessage = (`Welcome to the Brain Games!${gameMessage}`);
+  const welcomeMessage = (`Welcome to the Brain Games!\n${gameMessage}`);
   const userName = readlineSync.question(`${welcomeMessage}\n\nMay I have your name? `);
   console.log(`Hello, ${userName}\n`);
 

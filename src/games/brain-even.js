@@ -1,16 +1,12 @@
 import createGame from '..';
+import getRandomNumber from '../utils';
 
-import {
-  getRandomNumber,
-  questionToString,
-} from '../utils';
-
-const gameDescription = '\nAnswer "yes" if number even otherwise answer "no".';
+const gameDescription = 'Answer "yes" if number even otherwise answer "no".';
 
 const isEven = num => num % 2 === 0;
 
 const gameIsEven = () => {
-  const question = questionToString(getRandomNumber());
+  const question = getRandomNumber();
   const correctAnswer = isEven(question) ? 'yes' : 'no';
 
   return { question, correctAnswer };

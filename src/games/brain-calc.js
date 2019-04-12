@@ -1,11 +1,7 @@
 import createGame from '..';
+import getRandomNumber from '../utils';
 
-import {
-  getRandomNumber,
-  questionToString,
-} from '../utils';
-
-const gameDescription = '\nWhat is the result of the expression?';
+const gameDescription = 'What is the result of the expression?';
 
 const getRandomExpression = () => {
   const expressions = ['+', '-', '*'];
@@ -37,7 +33,7 @@ const gameCalc = () => {
   const numTwo = getRandomNumber();
   const currentExpression = getRandomExpression();
 
-  const question = questionToString(numOne, currentExpression, numTwo);
+  const question = [numOne, currentExpression, numTwo].join(' ');
   const correctAnswer = calculate(numOne, numTwo, currentExpression);
 
   return { question, correctAnswer };

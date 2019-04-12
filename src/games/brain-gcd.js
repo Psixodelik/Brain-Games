@@ -1,11 +1,7 @@
 import createGame from '..';
+import getRandomNumber from '../utils';
 
-import {
-  getRandomNumber,
-  questionToString,
-} from '../utils';
-
-const gameDescription = '\nFind the greatest common divisor of given numbers.';
+const gameDescription = 'Find the greatest common divisor of given numbers.';
 
 const calcGcd = (numOne, numTwo) => {
   let copyNumOne = numOne;
@@ -25,7 +21,7 @@ const calcGcd = (numOne, numTwo) => {
 const gameGcd = () => {
   const numOne = getRandomNumber();
   const numTwo = getRandomNumber();
-  const question = questionToString(numOne, numTwo);
+  const question = [numOne, numTwo].join(' ');
   const correctAnswer = calcGcd(numOne, numTwo);
 
   return { question, correctAnswer };
