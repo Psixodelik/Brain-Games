@@ -9,21 +9,22 @@
 npm install -g braingames-nmikhaylov
 ```
 
-<script id="asciicast-240337" src="https://asciinema.org/a/240337.js" async></script>
+[![asciicast](https://asciinema.org/a/240337.svg)](https://asciinema.org/a/240337)
+
 
 ## Usage
 
-**brain-even** — run BrainEven game
-<script id="asciicast-240339" src="https://asciinema.org/a/240339.js" async></script>
+**brain-even** â€” run BrainEven game
+[![asciicast](https://asciinema.org/a/240339.svg)](https://asciinema.org/a/240339)
 
-**brain-calc** — run BrainCalc game
-<script id="asciicast-240342" src="https://asciinema.org/a/240342.js" async></script>
+**brain-calc** â€” run BrainCalc game
+[![asciicast](https://asciinema.org/a/240342.svg)](https://asciinema.org/a/240342)
 
-**brain-gcd** — run BrainGcd game
-<script id="asciicast-240343" src="https://asciinema.org/a/240343.js" async></script>
+**brain-gcd** â€” run BrainGcd game
+[![asciicast](https://asciinema.org/a/240343.svg)](https://asciinema.org/a/240343)
 
-**brain-progression** — run BrainProgression game
-<script id="asciicast-240344" src="https://asciinema.org/a/240344.js" async></script>
+**brain-progression** â€” run BrainProgression game
+[![asciicast](https://asciinema.org/a/240344.svg)](https://asciinema.org/a/240344)
 
-**brain-prime** — run BrainPrime game
-<script id="asciicast-240345" src="https://asciinema.org/a/240345.js" async></script>
+**brain-prime** â€” run BrainPrime game
+[![asciicast](https://asciinema.org/a/240345.svg)](https://asciinema.org/a/240345)
