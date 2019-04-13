@@ -18,13 +18,13 @@ const calcGcd = (numOne, numTwo) => {
   return result;
 };
 
-const gameGcd = () => {
+const createQuestionAndAnswer = () => {
   const numOne = getRandomNumber();
   const numTwo = getRandomNumber();
-  const question = [numOne, numTwo].join(' ');
+  const question = `${numOne} ${numTwo}`;
   const correctAnswer = calcGcd(numOne, numTwo);
 
   return { question, correctAnswer };
 };
 
-export default () => createGame(gameGcd, gameDescription);
+export default () => createGame(createQuestionAndAnswer, gameDescription);

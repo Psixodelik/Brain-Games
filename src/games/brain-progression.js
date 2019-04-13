@@ -2,37 +2,32 @@ import createGame from '..';
 import getRandomNumber from '../utils';
 
 const gameDescription = 'What number is missing in the progression?';
+const progressionLength = 10;
 
-const createRandomProgression = (start, steps, count) => {
+const createProgression = (start, steps, count) => {
   const progression = [];
 
   for (let i = 0; i < count; i += 1) {
     progression.push(start + steps * i);
   }
 
-  const randomElementIndex = getRandomNumber(0, progression.length - 1);
-  const answer = progression[randomElementIndex];
-  progression[randomElementIndex] = '..';
-
-  return { numbers: progression, answer };
+  return progression;
 };
 
-const gameProgression = () => {
-  const progressionSettings = {
-    start: getRandomNumber(0, 1000),
-    steps: getRandomNumber(1, 20),
-    count: 10,
-  };
-
-  const progression = createRandomProgression(
-    progressionSettings.start,
-    progressionSettings.steps,
-    progressionSettings.count,
+const createQuestionAndAnswer = () => {
+  const progression = createProgression(
+    getRandomNumber(0, 1000),
+    getRandomNumber(1, 20),
+    progressionLength,
   );
-  const question = progression.numbers.join(' ');
-  const correctAnswer = progression.answer;
+
+  const randomElementIndex = getRandomNumber(0, progressionLength - 1);
+  const correctAnswer = progression[randomElementIndex];
+  progression[randomElementIndex] = '..';
+
+  const question = progression.join(' ');
 
   return { question, correctAnswer };
 };
 
-export default () => createGame(gameProgression, gameDescription);
+export default () => createGame(createQuestionAndAnswer, gameDescription);

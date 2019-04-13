@@ -6,18 +6,18 @@ const gameDescription = 'Answer "yes" if given number is prime. Otherwise answer
 const isPrime = (number) => {
   if (number < 2) return false;
 
-  for (let i = 2; i < number / 2; i += 1) {
+  for (let i = 2; i <= number / 2; i += 1) {
     if (number % i === 0) return false;
   }
 
   return true;
 };
 
-const gamePrimeNumber = () => {
+const createQuestionAndAnswer = () => {
   const question = getRandomNumber(0, 4000);
   const correctAnswer = isPrime(question) ? 'yes' : 'no';
 
   return { question, correctAnswer };
 };
 
-export default () => createGame(gamePrimeNumber, gameDescription);
+export default () => createGame(createQuestionAndAnswer, gameDescription);

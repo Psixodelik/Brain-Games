@@ -2,41 +2,32 @@ import createGame from '..';
 import getRandomNumber from '../utils';
 
 const gameDescription = 'What is the result of the expression?';
+const operations = ['+', '-', '*'];
 
-const getRandomExpression = () => {
-  const expressions = ['+', '-', '*'];
-  return expressions[getRandomNumber(0, expressions.length - 1)];
-};
+const getRandomOperations = () => operations[getRandomNumber(0, operations.length - 1)];
 
-const calculate = (numOne, numTwo, expression) => {
-  let result = null;
-
-  switch (expression) {
+const calculate = (numOne, numTwo, operation) => {
+  switch (operation) {
     case '+':
-      result = numOne + numTwo;
-      break;
+      return numOne + numTwo;
     case '-':
-      result = numOne - numTwo;
-      break;
+      return numOne - numTwo;
     case '*':
-      result = numOne * numTwo;
-      break;
+      return numOne * numTwo;
     default:
-      break;
+      return 'Incorrect operation';
   }
-
-  return result;
 };
 
-const gameCalc = () => {
+const createQuestionAndAnswer = () => {
   const numOne = getRandomNumber();
   const numTwo = getRandomNumber();
-  const currentExpression = getRandomExpression();
+  const currentOperations = getRandomOperations();
 
-  const question = [numOne, currentExpression, numTwo].join(' ');
-  const correctAnswer = calculate(numOne, numTwo, currentExpression);
+  const question = `${numOne} ${currentOperations} ${numTwo}`;
+  const correctAnswer = calculate(numOne, numTwo, currentOperations);
 
   return { question, correctAnswer };
 };
 
-export default () => createGame(gameCalc, gameDescription);
+export default () => createGame(createQuestionAndAnswer, gameDescription);

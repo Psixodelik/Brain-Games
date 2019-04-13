@@ -1,6 +1,6 @@
 {
   "name": "braingames-nmikhaylov",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Brain Games. Include BrainEven, BrainCalc, BrainGCD, BrainProgression, BrainPrime",
   "main": "",
   "bin": {
