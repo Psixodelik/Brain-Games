@@ -1,4 +1,4 @@
-import createGame from '..';
+import playGame from '..';
 import getRandomNumber from '../utils';
 
 const gameDescription = 'Find the greatest common divisor of given numbers.';
@@ -22,9 +22,9 @@ const createQuestionAndAnswer = () => {
   const numOne = getRandomNumber();
   const numTwo = getRandomNumber();
   const question = `${numOne} ${numTwo}`;
-  const correctAnswer = calcGcd(numOne, numTwo);
+  const correctAnswer = calcGcd(numOne, numTwo).toString();
 
   return { question, correctAnswer };
 };
 
-export default () => createGame(createQuestionAndAnswer, gameDescription);
+export default () => playGame(createQuestionAndAnswer, gameDescription);

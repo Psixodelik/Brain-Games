@@ -1,4 +1,4 @@
-import createGame from '..';
+import playGame from '..';
 import getRandomNumber from '../utils';
 
 const gameDescription = 'Answer "yes" if given number is prime. Otherwise answer "no".';
@@ -20,4 +20,4 @@ const createQuestionAndAnswer = () => {
   return { question, correctAnswer };
 };
 
-export default () => createGame(createQuestionAndAnswer, gameDescription);
+export default () => playGame(createQuestionAndAnswer, gameDescription);

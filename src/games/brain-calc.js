@@ -1,10 +1,10 @@
-import createGame from '..';
+import playGame from '..';
 import getRandomNumber from '../utils';
 
 const gameDescription = 'What is the result of the expression?';
-const operations = ['+', '-', '*'];
+const operators = ['+', '-', '*'];
 
-const getRandomOperations = () => operations[getRandomNumber(0, operations.length - 1)];
+const getRandomOperations = () => operators[getRandomNumber(0, operators.length - 1)];
 
 const calculate = (numOne, numTwo, operation) => {
   switch (operation) {
@@ -25,9 +25,9 @@ const createQuestionAndAnswer = () => {
   const currentOperations = getRandomOperations();
 
   const question = `${numOne} ${currentOperations} ${numTwo}`;
-  const correctAnswer = calculate(numOne, numTwo, currentOperations);
+  const correctAnswer = calculate(numOne, numTwo, currentOperations).toString();
 
   return { question, correctAnswer };
 };
 
-export default () => createGame(createQuestionAndAnswer, gameDescription);
+export default () => playGame(createQuestionAndAnswer, gameDescription);
