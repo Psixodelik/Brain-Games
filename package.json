@@ -1,6 +1,6 @@
 {
   "name": "braingames-nmikhaylov",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Brain Games. Include BrainEven, BrainCalc, BrainGCD, BrainProgression, BrainPrime",
   "main": "",
   "bin": {
@@ -45,7 +45,6 @@
     "babel-eslint": "^10.0.1",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-babel": "^5.3.0",
     "eslint-plugin-import": "^2.16.0"
   },
   "dependencies": {

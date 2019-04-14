@@ -13,9 +13,7 @@ const calcGcd = (numOne, numTwo) => {
     copyNumTwo = buf;
   }
 
-  const result = copyNumOne;
-
-  return result;
+  return copyNumOne;
 };
 
 const createQuestionAndAnswer = () => {

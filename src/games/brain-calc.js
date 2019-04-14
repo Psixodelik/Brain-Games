@@ -12,10 +12,8 @@ const calculate = (numOne, numTwo, operation) => {
       return numOne + numTwo;
     case '-':
       return numOne - numTwo;
-    case '*':
-      return numOne * numTwo;
     default:
-      return 'Incorrect operation';
+      return numOne * numTwo;
   }
 };
 
