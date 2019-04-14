@@ -4,10 +4,10 @@ import getRandomNumber from '../utils';
 const gameDescription = 'What is the result of the expression?';
 const operators = ['+', '-', '*'];
 
-const getRandomOperations = () => operators[getRandomNumber(0, operators.length - 1)];
+const getRandomOperator = () => operators[getRandomNumber(0, operators.length - 1)];
 
-const calculate = (numOne, numTwo, operation) => {
-  switch (operation) {
+const calculate = (numOne, numTwo, operator) => {
+  switch (operator) {
     case '+':
       return numOne + numTwo;
     case '-':
@@ -20,10 +20,10 @@ const calculate = (numOne, numTwo, operation) => {
 const createQuestionAndAnswer = () => {
   const numOne = getRandomNumber();
   const numTwo = getRandomNumber();
-  const currentOperations = getRandomOperations();
+  const currentOperator = getRandomOperator();
 
-  const question = `${numOne} ${currentOperations} ${numTwo}`;
-  const correctAnswer = calculate(numOne, numTwo, currentOperations).toString();
+  const question = `${numOne} ${currentOperator} ${numTwo}`;
+  const correctAnswer = calculate(numOne, numTwo, currentOperator).toString();
 
   return { question, correctAnswer };
 };
