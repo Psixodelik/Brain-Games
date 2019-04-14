@@ -7,14 +7,21 @@ const operators = ['+', '-', '*'];
 const getRandomOperator = () => operators[getRandomNumber(0, operators.length - 1)];
 
 const calculate = (numOne, numTwo, operator) => {
+  let result = 0;
   switch (operator) {
     case '+':
-      return numOne + numTwo;
+      result = numOne + numTwo;
+      break;
     case '-':
-      return numOne - numTwo;
+      result = numOne - numTwo;
+      break;
+    case '*':
+      result = numOne * numTwo;
+      break;
     default:
-      return numOne * numTwo;
   }
+
+  return result;
 };
 
 const createQuestionAndAnswer = () => {
